@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_02_21_202645) do
   create_table "games_consoles", force: :cascade do |t|
     t.integer "game_id"
     t.integer "console_id"
+    t.index ["console_id"], name: "index_games_consoles_on_console_id"
+    t.index ["game_id"], name: "index_games_consoles_on_game_id"
   end
 
   create_table "users", force: :cascade do |t|
