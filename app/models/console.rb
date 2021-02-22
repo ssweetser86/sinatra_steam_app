@@ -1,5 +1,5 @@
 class Console < ActiveRecord::Base
-    belongs_to :user
-    has_many :games_consoles
-    has_many :games, through: :games_consoles
+    has_many :user_consoles
+    has_many :games
+    has_many :users, through: :user_consoles
 end
