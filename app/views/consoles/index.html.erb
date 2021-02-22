@@ -1,1 +1,4 @@
-<h1>This is the Model's index page.</h1>
+<h1>Consoles</h1>
+<% @user.consoles.each do |c| %>
+    <a href="/consoles/<%= c.id %>"><%= c.name %></a><br>
+<% end %>
