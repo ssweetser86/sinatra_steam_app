@@ -58,11 +58,11 @@ class ApplicationController < Sinatra::Base
     end
 
     def redirect_to_home_page
-      redirect to "/games"
+      redirect to "/consoles"
     end
 
-    def redirect_to_consoles
-      redirect to "/consoles"
+    def redirect_to_games
+      redirect to "/games"
     end
 
   end

@@ -2,6 +2,7 @@ class ConsolesController < ApplicationController
 
   # GET: /consoles
   get "/consoles" do
+    @user = User.find(session[:user_id])
     erb :"/consoles/index.html"
   end
 
@@ -12,6 +13,9 @@ class ConsolesController < ApplicationController
 
   # POST: /consoles
   post "/consoles" do
+    @user = User.find(session[:user_id])
+    console = Console.find_or_create_by(name: params[:name])
+    @user.consoles << console if !@user.consoles.include?(console)
     redirect "/consoles"
   end
 

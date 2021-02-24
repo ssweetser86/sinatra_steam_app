@@ -1,4 +1,7 @@
 <h1>Consoles</h1>
+<form action="/consoles" method="post">
+    <label>New Console: <input type="text" name="name"></label>
+    <input type="submit" value="Add Console"><br><br>
 <% @user.consoles.each do |c| %>
     <a href="/consoles/<%= c.id %>"><%= c.name %></a><br>
 <% end %>
