@@ -17,6 +17,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get "/logout" do
+    redirect_if_not_logged_in
+    session.clear
+    redirect_to_home_page
+  end
+
   get "/signup" do
     erb :signup
   end
@@ -53,7 +59,7 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_not_logged_in
       if !logged_in?
-        redirect "/login"
+        redirect "/"
       end
     end
 
