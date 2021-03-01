@@ -39,7 +39,8 @@ class ConsolesController < ApplicationController
   # DELETE: /consoles/5/delete
   delete "/consoles/:id/delete" do
     redirect_if_not_logged_in
-    @console = Console.find(params[:id])
-    redirect "/consoles"
+    @user = current_user
+    @user.consoles.delete(Console.find(params[:id]))
+    redirect_to_home_page
   end
 end
