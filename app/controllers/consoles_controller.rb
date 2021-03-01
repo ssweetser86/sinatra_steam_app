@@ -33,8 +33,13 @@ class ConsolesController < ApplicationController
   # PATCH: /consoles/5
   patch "/consoles/:id" do
     redirect_if_not_logged_in
-    redirect "/consoles/:id"
+    @console = Console.find_or_create_by(params[:name])
+    @user = current_user
+    @user.consoles.delete(Console.find(params[:id]))
+    @user.consoles << @console
+    redirect_to_home_page
   end
+
 
   # DELETE: /consoles/5/delete
   delete "/consoles/:id/delete" do
