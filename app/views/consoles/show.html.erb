@@ -1,13 +1,34 @@
 <h1><%= @console.name %><h1>
+
 <h2>Games</h2>
-<% @console.games.each do |g| %>
-<h3><%= g.title if g.users.include?(current_user) %></h3>
+
+<% @games.each do |g| %>
+    <h3><%= g.title if g.users.include?(current_user) %></h3>
 <% end %>
-<form action="/consoles/<%= @console.id %>/edit" method="get">
-<input type="submit" value="Edit">
+
+<p>Add Game:</p>
+
+<form action="/games" method="post">
+    <select name="title">
+        <% @games.each do |g| %>
+            <% if !g.users.include?(current_user) %>
+                <option name="title"><%= g.title %></option>
+            <% end %>
+        <% end %>
+        <option name="title">Create Game</option>
+    </select>
+    <label for="game">Add New Game</label>
+    <input type="text" name="title_add" placeholder="Game Title">
+    <input type="hidden" name="console_id" value="<%= @console.id %>">
+    <input type="submit" value="Add Game">
 </form>
+
+<form action="/consoles/<%= @console.id %>/edit" method="get">
+    <input type="submit" value="Edit">
+</form>
+
 <form action="/consoles/<%= @console.id %>/delete" method="post">
-<input id="hidden" type="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
 </form>
 
