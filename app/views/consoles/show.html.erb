@@ -1,6 +1,9 @@
 <h1><%= @console.name %><h1>
-<form action="/consoles/<%= @console.id %>/edit" method="post">
-<input id="hidden" type="hidden" name="_method" value="PATCH">
+<h2>Games</h2>
+<% @console.games.each do |g| %>
+<h3><%= g.title if g.users.include?(current_user) %></h3>
+<% end %>
+<form action="/consoles/<%= @console.id %>/edit" method="get">
 <input type="submit" value="Edit">
 </form>
 <form action="/consoles/<%= @console.id %>/delete" method="post">

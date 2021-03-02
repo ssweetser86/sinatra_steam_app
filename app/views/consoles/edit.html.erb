@@ -1,6 +1,6 @@
 <form action="/consoles/<%= @console.id %>" method="post">
 <input id="hidden" type="hidden" name="_method" value="PATCH">
 <label for="name">Name:</label>
-<input type="text" name="name" value="<%= @console.id %>">
+<input type="text" name="name" value="<%= @console.name %>">
 <input type="submit" value="Update">
 </form>
