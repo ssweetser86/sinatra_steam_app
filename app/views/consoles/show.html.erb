@@ -1,11 +1,11 @@
 <h1><%= @console.name %><h1>
 
 <h2>Games</h2>
-
+<ul>
 <% @games.each do |g| %>
-    <h3><%= g.title if g.users.include?(current_user) %></h3>
+    <li><%= g.title if g.users.include?(current_user) %></li>
 <% end %>
-
+</ul>
 <p>Add Game:</p>
 
 <form action="/games" method="post">
