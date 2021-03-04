@@ -3,7 +3,14 @@
 <h2>Games</h2>
 <ul>
 <% @games.each do |g| %>
-    <li><%= g.title if g.users.include?(current_user) %></li>
+    <% if g.users.include?(current_user) %>
+    <li><%= g.title %>
+    <form action="/games/<%= g.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Remove">
+    </form>
+    </li>
+    <% end %>
 <% end %>
 </ul>
 <p>Add Game:</p>

@@ -37,6 +37,9 @@ class GamesController < ApplicationController
 
   # DELETE: /games/5/delete
   delete "/games/:id/delete" do
-    redirect "/games"
+    redirect_if_not_logged_in
+    @user = current_user
+    @user.games.delete(Game.find(params[:id]))
+    redirect_to_home_page
   end
 end
