@@ -67,9 +67,5 @@ class ApplicationController < Sinatra::Base
       redirect to "/consoles"
     end
 
-    def redirect_to_games
-      redirect to "/games"
-    end
-
   end
 end
