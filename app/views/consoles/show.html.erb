@@ -1,44 +1,50 @@
-<h1><%= @console.name %><h1>
+<div style="margin: auto; width: 60%;">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Console: <%= @console.name %></h1>
 
-<h2>Games</h2>
-<ul>
-<% @games.each do |g| %>
-    <% if g.users.include?(current_user) %>
-    <li><%= g.title %>
-    <form action="/games/<%= g.id %>/delete" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="hidden" name="console_id" value="<%= @console.id %>">
-        <input type="submit" value="Remove">
-    </form>
-    </li>
-    <% end %>
-<% end %>
-</ul>
-<p>Add Game:</p>
+            <form action="/consoles/<%= @console.id %>/delete" method="post">
+                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                <a href="/consoles/<%= @console.id %>/edit" class="btn btn-default"> Edit Console </a>
+                <input type="submit" value="Delete Console" class="btn btn-default">
+            </form>
+            <p>Add Game:<br>Choose from the list, or select "Create Game" and type in the title.</p>
 
-<form action="/games" method="post">
-    <select name="title">
-        <% @games.each do |g| %>
-            <% if !g.users.include?(current_user) %>
-                <option name="title"><%= g.title %></option>
-            <% end %>
-        <% end %>
-        <option name="title">Create Game</option>
-    </select>
-    <label for="game">Add New Game</label>
-    <input type="text" name="title_add" placeholder="Game Title">
-    <input type="hidden" name="console_id" value="<%= @console.id %>">
-    <input type="submit" value="Add Game">
-</form>
+            <form action="/games" method="post">
+                <select name="title">
+                    <% @games.each do |g| %>
+                        <% if !g.users.include?(current_user) %>
+                            <option name="title"><%= g.title %></option>
+                        <% end %>
+                    <% end %>
+                    <option name="title">Create Game</option>
+                </select>
+                <label for="game">Add New Game</label>
+                <input type="text" name="title_add" placeholder="Game Title">
+                <input type="hidden" name="console_id" value="<%= @console.id %>">
+                <input type="submit" value="Add Game" class="btn btn-default">
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <h2>Games:</h2>
+            <ul>
+                <% @games.each do |g| %>
+                    <% if g.users.include?(current_user) %>
+                        <li>
+                            <form action="/games/<%= g.id %>/delete" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <label for="none"><%= g.title %></label>
+                                <input type="hidden" name="console_id" value="<%= @console.id %>">
+                                <input type="submit" value="Remove">
+                            </form>
+                        </li>
+                    <% end %>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<form action="/consoles/<%= @console.id %>/edit" method="get">
-    <input type="submit" value="Edit">
-</form>
-
-<form action="/consoles/<%= @console.id %>/delete" method="post">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-</form>
 
 <a href="/consoles">Back to Console List</a><br><br>
 <a href="/logout">Log Out</a>
