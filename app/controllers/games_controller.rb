@@ -17,7 +17,7 @@ class GamesController < ApplicationController
     @game = Game.find_or_create_by(title: title, console_id: params[:console_id])
     current_user.games << @game if !current_user.games.include?(@game)
 
-    redirect_to_home_page
+    redirect "/consoles/#{params[:console_id]}"
   end
 
   # GET: /games/5
@@ -40,6 +40,6 @@ class GamesController < ApplicationController
     redirect_if_not_logged_in
     @user = current_user
     @user.games.delete(Game.find(params[:id]))
-    redirect_to_home_page
+    redirect "/consoles/#{params[:console_id]}"
   end
 end
