@@ -31,18 +31,23 @@
             <a href="/logout">Log Out</a>
         </div>
         <div class="col-sm-6">
-            <h2>Your Games:</h2>
+            <h2>Your Games:</h2><br>
             <ul>
                 <% @games.each do |g| %>
                     <% if g.users.include?(current_user) %>
-                        <li>
-                            <form action="/games/<%= g.id %>/delete" method="post">
+                        <div class="row">
+                            <form class="form-inline" action="/games/<%= g.id %>/delete" method="post">
                                 <input type="hidden" name="_method" value="delete">
-                                <label for="none"><%= g.title %></label>
-                                <input type="hidden" name="console_id" value="<%= @console.id %>">
-                                <input type="submit" value="Remove">
+                                <div class="col-md-8">
+                                    <label for="none"><%= g.title %></label>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input type="hidden" name="console_id" value="<%= @console.id %>">
+                                    <input type="submit" class="btn btn-danger btn-xs " value="Remove">
+                                </div>
                             </form>
-                        </li>
+                        </div>
+                        <hr>
                     <% end %>
                 <% end %>
             </ul>
