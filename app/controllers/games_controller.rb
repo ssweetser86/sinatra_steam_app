@@ -1,11 +1,12 @@
 class GamesController < ApplicationController
 
   post "/games" do
-    title = params[:title]
-    title = params[:title_add] if title == "Create Game"
-    @game = Game.find_or_create_by(title: title, console_id: params[:console_id])
-    current_user.games << @game if !current_user.games.include?(@game)
-
+    if valid_params?(params)
+      title = params[:title]
+      title = params[:title_add] if title == "Create Game"
+      @game = Game.find_or_create_by(title: title, console_id: params[:console_id])
+      current_user.games << @game if !current_user.games.include?(@game)
+    end
     redirect "/consoles/#{params[:console_id]}"
   end
 

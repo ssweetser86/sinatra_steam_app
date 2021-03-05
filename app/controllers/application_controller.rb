@@ -28,7 +28,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do
-    if params[:username] == "" || params[:password] == "" || params[:email] == ""
+    if !valid_params?(params)
+      redirect '/signup'
+    elsif User.find_by(username: params[:username])
       redirect '/signup'
     else
       User.create(username: params[:username], password: params[:password], email: params[:email])
@@ -65,6 +67,15 @@ class ApplicationController < Sinatra::Base
 
     def redirect_to_home_page
       redirect to "/consoles"
+    end
+
+    def valid_params?(hash)
+      hash.each do |k, v|
+        if v.empty?
+          return false
+        end
+      end
+      return true
     end
 
   end
