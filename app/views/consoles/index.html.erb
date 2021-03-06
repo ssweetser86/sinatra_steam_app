@@ -2,11 +2,13 @@
     <h1>Consoles</h1>
     
     <% @user.consoles.each do |c| %>
-        <a href="/consoles/<%= c.id %>"><%= c.name %></a><br>
+        <a href="/consoles/<%= c.id %>"><%= c.company %> <%= c.name %></a><br>
     <% end %>
     <br><br>
+    <h3>New Console:</h3>
     <form action="/consoles" method="post">
-        <label>New Console: <input type="text" name="name"></label>
+        <input type="text" name="company" placeholder="Company Name">
+        <input type="text" name="name" placeholder="Model Name">
         <input type="submit" value="Add Console">
     </form>
     <br><br>
