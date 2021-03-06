@@ -9,9 +9,9 @@ class ConsolesController < ApplicationController
   post "/consoles" do
     redirect_if_not_logged_in
     if valid_params?(params)
-      @user = User.find(session[:user_id])
-      console = Console.find_or_create_by(name: params[:name])
-      @user.consoles << console if !@user.consoles.include?(console)
+      user = User.find(session[:user_id])
+      console = Console.find_or_create_by(name: params[:name], company: params[:company])
+      user.consoles << console if !user.consoles.include?(console)
     end
     redirect "/consoles"
     
