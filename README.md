@@ -7,7 +7,7 @@ This Sinatra web app will help you keep track of your consoles and games that yo
 
 ## Usage
 
-Clone this repo, then run `bundle install`, `rake db:migrate` and then run `shotgun`.
+Clone this repo, run `bundle install`, `rake db:migrate` and then run `shotgun`.
 
 ## Functionality
 
