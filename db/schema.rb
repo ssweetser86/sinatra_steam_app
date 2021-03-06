@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_192744) do
+ActiveRecord::Schema.define(version: 2021_03_05_234848) do
 
   create_table "consoles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company"
   end
 
   create_table "games", force: :cascade do |t|
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_192744) do
     t.integer "console_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "genre"
   end
 
   create_table "user_consoles", force: :cascade do |t|
