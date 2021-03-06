@@ -3,7 +3,8 @@ class GamesController < ApplicationController
   post "/games" do
     if params[:title] == "Create Game"
       if valid_params?(params)
-        game = Game.create(title: params[:title_add], genre: params[:genre])
+        game = Game.create(title: params[:title_add], genre: params[:genre_add])
+        Console.find(params[:console_id]).games << game
         current_user.games << game  if !current_user.games.include?(game)
       end
     else

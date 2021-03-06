@@ -20,9 +20,10 @@
                             <option name="title"><%= g.title %></option>
                         <% end %>
                     <% end %>
-                </select>
-                <label for="game">Add New Game</label>
-                <input type="text" name="title_add" placeholder="Game Title">
+                </select><br><br>
+                <label for="game">Add New Game:</label><br>
+                <input type="text" name="title_add" placeholder="Game Title"><br>
+                <input type="text" name="genre_add" placeholder="Game Genre"><br>
                 <input type="hidden" name="console_id" value="<%= @console.id %>">
                 <input type="submit" value="Add Game" class="btn btn-default">
             </form>
