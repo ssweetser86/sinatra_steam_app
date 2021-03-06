@@ -40,7 +40,8 @@
                             <form class="form-inline" action="/games/<%= g.id %>/delete" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <div class="col-md-8">
-                                    <label for="none"><%= g.title %></label>
+                                    <label for="none">Title: <%= g.title %></label><br>
+                                    <label for="none">Genre: <%= g.genre %></label>
                                 </div>
                                 <div class="col-xs-2">
                                     <input type="hidden" name="console_id" value="<%= @console.id %>">
