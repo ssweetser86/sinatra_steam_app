@@ -16,4 +16,4 @@ Each user is private, meaning there is no way any other user can see what is sto
 Everything is fairly obvious from signing in. Create a console, then add your games!
 
 ## License
-Expensy is licensed under the MIT license. (http://opensource.org/licenses/MIT)
+Licensed under the MIT license. (http://opensource.org/licenses/MIT)
