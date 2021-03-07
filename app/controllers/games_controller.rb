@@ -8,7 +8,6 @@ class GamesController < ApplicationController
         current_user.games << game  if !current_user.games.include?(game)
       end
     else
-      binding.pry
       game = Game.find_by(title: params[:title], console_id: params[:console_id])
       current_user.games << game
     end
